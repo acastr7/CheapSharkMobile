@@ -41,6 +41,13 @@
     <Compile Include="Framework\Services\DialogService.cs" />
     <Compile Include="ViewModels\Pages\BasePageViewModel.cs" />
     <Compile Include="Framework\Services\Interfaces\ISQLite.cs" />
+    <Compile Include="Framework\Api\CheapSharkAPI.cs" />
+    <Compile Include="Framework\Api\ServiceModels\Deal.cs" />
+    <Compile Include="Framework\Api\ServiceModels\DealInformation.cs" />
+    <Compile Include="Framework\Api\ServiceModels\CheaperStore.cs" />
+    <Compile Include="Framework\Api\ServiceModels\CheapestPrice.cs" />
+    <Compile Include="Framework\Api\ServiceModels\GameInfo.cs" />
+    <Compile Include="Framework\Api\ServiceModels\DealSortByStrings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -112,5 +119,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="ViewModels\Pages\" />
     <Folder Include="Framework\Services\Interfaces\" />
+    <Folder Include="Framework\Api\" />
+    <Folder Include="Framework\Api\ServiceModels\" />
   </ItemGroup>
 </Project>
