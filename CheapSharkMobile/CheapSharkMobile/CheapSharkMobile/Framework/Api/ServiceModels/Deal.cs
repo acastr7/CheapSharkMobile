@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace CheapSharkMobile
 {
@@ -24,7 +25,8 @@ namespace CheapSharkMobile
 
 		public string MetacriticScore { get; set; }
 
-		public int ReleaseDate { get; set; }
+		[JsonConverter (typeof(EpochToDateTimeConverter))]
+		public DateTime ReleaseDate { get; set; }
 
 		public int LastChange { get; set; }
 

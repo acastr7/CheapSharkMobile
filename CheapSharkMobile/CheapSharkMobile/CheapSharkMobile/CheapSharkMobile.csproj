@@ -49,11 +49,11 @@
     <Compile Include="Framework\Api\ServiceModels\GameInfo.cs" />
     <Compile Include="Framework\Api\ServiceModels\DealSortByStrings.cs" />
     <Compile Include="ViewModels\Pages\DealsPageViewModel.cs" />
-    <Compile Include="Framework\NotifyTaskCompletion.cs" />
     <Compile Include="Pages\DealsPage.xaml.cs">
       <DependentUpon>DealsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Framework\ViewModelBinder.cs" />
+    <Compile Include="Framework\Helpers\EpochToDateTimeConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -130,6 +130,7 @@
     <Folder Include="Framework\Services\Interfaces\" />
     <Folder Include="Framework\Api\" />
     <Folder Include="Framework\Api\ServiceModels\" />
+    <Folder Include="Framework\Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\DealsPage.xaml">

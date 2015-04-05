@@ -11,11 +11,11 @@ namespace CheapSharkMobile
 		const string RootApi = "http://www.cheapshark.com/api/1.0/";
 
 		private string DealsApi {
-			get{ return RootApi + "Deals"; }
+			get{ return RootApi + "deals"; }
 		}
 
 		private string GamesApi {
-			get{ return RootApi + "Games"; }
+			get{ return RootApi + "games"; }
 		}
 
 		private string StoresApi {
@@ -23,7 +23,7 @@ namespace CheapSharkMobile
 		}
 
 		private string AlertsApi {
-			get{ return RootApi + "Alerts"; }
+			get{ return RootApi + "alerts"; }
 		}
 
 		public CheapSharkAPI ()
