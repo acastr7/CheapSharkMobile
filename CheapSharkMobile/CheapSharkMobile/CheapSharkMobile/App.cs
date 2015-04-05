@@ -17,17 +17,7 @@ namespace CheapSharkMobile
 
 			Bootstrap.Run ();
 			// The root page of your application
-			MainPage = new ContentPage {
-				Content = new StackLayout {
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							XAlign = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-				}
-			};
+			MainPage = new DealsPage ();
 		}
 
 		protected override void OnStart ()

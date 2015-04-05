@@ -48,6 +48,12 @@
     <Compile Include="Framework\Api\ServiceModels\CheapestPrice.cs" />
     <Compile Include="Framework\Api\ServiceModels\GameInfo.cs" />
     <Compile Include="Framework\Api\ServiceModels\DealSortByStrings.cs" />
+    <Compile Include="ViewModels\Pages\DealsPageViewModel.cs" />
+    <Compile Include="Framework\NotifyTaskCompletion.cs" />
+    <Compile Include="Pages\DealsPage.xaml.cs">
+      <DependentUpon>DealsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Framework\ViewModelBinder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -98,6 +104,9 @@
     <Reference Include="SQLite.Net">
       <HintPath>..\..\packages\SQLite.Net-PCL.2.5.1\lib\portable-win8+net45+wp8+wpa81+MonoAndroid1+MonoTouch1\SQLite.Net.dll</HintPath>
     </Reference>
+    <Reference Include="Nito.AsyncEx">
+      <HintPath>..\..\packages\Nito.AsyncEx.3.0.0\lib\portable-net45+netcore45+wp8+wpa81+MonoTouch+MonoAndroid\Nito.AsyncEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -121,5 +130,10 @@
     <Folder Include="Framework\Services\Interfaces\" />
     <Folder Include="Framework\Api\" />
     <Folder Include="Framework\Api\ServiceModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\DealsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

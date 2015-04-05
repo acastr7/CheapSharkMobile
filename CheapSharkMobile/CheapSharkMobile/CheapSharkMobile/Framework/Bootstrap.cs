@@ -10,6 +10,8 @@ namespace CheapSharkMobile
 		{
 			SimpleIoc.Default.Register<INavigationService, NavigationService> ();
 			SimpleIoc.Default.Register<IDialogService, DialogService> ();
+			SimpleIoc.Default.Register<CheapSharkAPI> ();
+
 
 		}
 	}
