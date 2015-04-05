@@ -1,0 +1,7 @@
+﻿<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheapSharkMobile.App" xmlns:local="clr-namespace:CheapSharkMobile;assembly=CheapSharkMobile">
+    <Application.Resources>
+        <ResourceDictionary>
+ 			<local:UriImageSouceConverter x:Key="UriImageSouceConverter"></local:UriImageSouceConverter>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -28,7 +28,8 @@ namespace CheapSharkMobile
 		[JsonConverter (typeof(EpochToDateTimeConverter))]
 		public DateTime ReleaseDate { get; set; }
 
-		public int LastChange { get; set; }
+		[JsonConverter (typeof(EpochToDateTimeConverter))]
+		public DateTime LastChange { get; set; }
 
 		public Double DealRating { get; set; }
 

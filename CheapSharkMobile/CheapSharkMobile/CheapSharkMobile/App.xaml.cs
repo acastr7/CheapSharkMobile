@@ -9,15 +9,16 @@ using GalaSoft.MvvmLight.Ioc;
 
 namespace CheapSharkMobile
 {
-	public class App : Application
+	public  class App : Application
 	{
-		public App ()
+		public  App ()
 		{
+			SetupGlobalStyles ();
 			ServiceLocator.SetLocatorProvider (() => SimpleIoc.Default);
 
 			Bootstrap.Run ();
 			// The root page of your application
-			MainPage = new DealsPage ();
+			MainPage = new NavigationPage (new DealsPage ());
 		}
 
 		protected override void OnStart ()
@@ -33,6 +34,13 @@ namespace CheapSharkMobile
 		protected override void OnResume ()
 		{
 			// Handle when your app resumes
+		}
+
+		void SetupGlobalStyles ()
+		{
+			Application.Current.Resources = new ResourceDictionary ();
+			Application.Current.Resources.Add ("UriImageSouceConverter", new UriImageSouceConverter ()); // use the "AppStyle" key in the app
+
 		}
 	}
 }

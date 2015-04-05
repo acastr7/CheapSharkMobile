@@ -22,6 +22,7 @@ namespace CheapSharkMobile
 		{
 			API = api;
 			Deals = NotifyTaskCompletion.Create<ObservableCollection<Deal>> (GetDeals);
+			Title = "Deals";
 		}
 
 		public async Task<ObservableCollection<Deal>> GetDeals ()
