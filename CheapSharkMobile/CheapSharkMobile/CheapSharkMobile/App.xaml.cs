@@ -42,5 +42,6 @@ namespace CheapSharkMobile
 			Application.Current.Resources.Add ("UriImageSouceConverter", new UriImageSouceConverter ()); // use the "AppStyle" key in the app
 
 		}
+			
 	}
 }

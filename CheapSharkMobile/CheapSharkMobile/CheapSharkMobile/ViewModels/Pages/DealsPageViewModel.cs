@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Nito.AsyncEx;
 using System.Diagnostics;
+using GalaSoft.MvvmLight.Views;
 
 namespace CheapSharkMobile
 {
@@ -18,9 +19,24 @@ namespace CheapSharkMobile
 			set { Set (() => Deals, ref deals, value); }
 		}
 
-		public DealsPageViewModel (CheapSharkAPI api)
+		Deal selectedItem;
+
+		public Deal SelectedItem {
+			get { return selectedItem; }
+			set { 
+				if (value != null) {
+					Navigation.NavigateTo ("DealsDetailPage", value.DealID);
+				}
+				Set (() => SelectedItem, ref selectedItem, value);
+			}
+		}
+
+		readonly INavigationService Navigation;
+
+		public DealsPageViewModel (CheapSharkAPI api, INavigationService navigation)
 		{
 			API = api;
+			Navigation = navigation;
 			Deals = NotifyTaskCompletion.Create<ObservableCollection<Deal>> (GetDeals);
 			Title = "Deals";
 		}

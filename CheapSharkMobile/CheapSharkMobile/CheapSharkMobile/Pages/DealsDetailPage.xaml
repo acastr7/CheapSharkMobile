@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheapSharkMobile.DealsDetailPage" Title="{Binding Title}">
+	<ContentPage.Content>
+		<TableView Intent="Data">
+			<TableRoot Title="{Binding Name}">
+			<TableSection Title="Game Info">
+				<TextCell Text="Sale Price" Detail="{Binding SalePrice}"/>
+				<TextCell Text="Retail Price" Detail="{Binding RetailPrice}"/>
+			</TableSection>
+			</TableRoot>
+		</TableView>
+	</ContentPage.Content>
+</ContentPage>

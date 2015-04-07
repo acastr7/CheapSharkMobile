@@ -39,6 +39,12 @@ namespace CheapSharkMobile
 
 			return await DealsApi.SetQueryParams (null).GetJsonAsync<List<Deal>> ();
 		}
+
+		public async Task<DealInformation> GetDeal (string storeId)
+		{
+			return await DealsApi.SetQueryParam ("storeId", storeId).GetJsonAsync<DealInformation> ();
+
+		}
 	}
 }
 

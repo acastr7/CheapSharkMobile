@@ -1,42 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheapSharkMobile.DealsPage" Title="{Binding Title}">
-   <ContentPage.Content>
-      <ListView ItemsSource="{Binding Deals.Result}" HasUnevenRows="true" BackgroundColor="Transparent">
-         <ListView.ItemTemplate>
-            <DataTemplate>
-               <!--   				<ImageCell ImageSource="{Binding Thumb}" Text="{Binding Title}" Detail="{Binding SalePrice, StringFormat='Price {0:C}'}"/>-->
-               <ViewCell>
-                  <ViewCell.View>
-                     <Grid>
-                        <Grid.RowDefinitions>
-                           <RowDefinition Height="50" />
-                           <RowDefinition Height="50" />
-                           <RowDefinition Height="100" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                           <ColumnDefinition Width="50" />
-                           <ColumnDefinition Width="*" />
-                           <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <!-- First Row -->
-                        <Image Source="Icon-Small" Grid.Row="0" Grid.Column="0" BackgroundColor="#014576"/>
-                        <Label Text="Steam" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="#014576" YAlign="Center"/>
-                        <Label Text="{Binding SalePrice, StringFormat='Price {0:C}'}" Grid.Row="0" Grid.Column="2" WidthRequest="100"/>
-                        <!-- Second Row -->
-                        <Label Text="{Binding Title}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" YAlign="Center"/>
-
-                        <!-- Third Row -->
-                        <Image Grid.Row="2" Grid.Column="1" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
-					        <Image.Source>
-					            <UriImageSource Uri="{Binding Thumb, Converter={StaticResource UriImageSouceConverter}}"/>
-					        </Image.Source>
-					    </Image>
-					    <Label Text="{Binding SalePrice, StringFormat='Price {0:C}'}" Grid.Row="2" Grid.Column="3"/>
-                     </Grid>
-                  </ViewCell.View>
-               </ViewCell>
-            </DataTemplate>
-         </ListView.ItemTemplate>
-      </ListView>
-   </ContentPage.Content>
+	<ContentPage.Content>
+		<ListView ItemsSource="{Binding Deals.Result}" HasUnevenRows="true" BackgroundColor="Transparent" SelectedItem="{Binding SelectedItem}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ImageCell ImageSource="{Binding Thumb}" Text="{Binding Title}" Detail="{Binding SalePrice, StringFormat='Price {0:C}'}"/>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
 </ContentPage>
