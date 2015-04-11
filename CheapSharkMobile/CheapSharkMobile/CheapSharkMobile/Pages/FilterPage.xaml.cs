@@ -5,12 +5,13 @@ using Xamarin.Forms;
 
 namespace CheapSharkMobile
 {
-	public partial class StoreSideDrawer : ContentPage
+	public partial class FilterPage : ContentPage, IModalPage
 	{
-		public StoreSideDrawer ()
+		public FilterPage ()
 		{
 			InitializeComponent ();
-			this.BindViewModel<StoreSideDrawerViewModel> ();
+
+			this.BindViewModel<FilterPageViewModel> ();
 		}
 	}
 }

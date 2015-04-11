@@ -13,6 +13,7 @@ namespace CheapSharkMobile
 	{
 		public  App ()
 		{
+			SetupDefaults ();
 			SetupGlobalStyles ();
 			ServiceLocator.SetLocatorProvider (() => SimpleIoc.Default);
 
@@ -23,7 +24,7 @@ namespace CheapSharkMobile
 
 		protected override void OnStart ()
 		{
-			// Handle when your app starts
+
 		}
 
 		protected override void OnSleep ()
@@ -42,6 +43,17 @@ namespace CheapSharkMobile
 			Application.Current.Resources.Add ("UriImageSouceConverter", new UriImageSouceConverter ()); // use the "AppStyle" key in the app
 			Application.Current.Resources.Add ("InverseBool", new InverseBool ());
 
+		}
+
+		void SetupDefaults ()
+		{
+			Application.Current.Properties ["StoreFilters"] = new Dictionary<int,bool> ();
+			Application.Current.Properties ["lowerPrice"] = 0;
+			Application.Current.Properties ["upperPrice"] = 50;
+			Application.Current.Properties ["metacritic"] = 0;
+			Application.Current.Properties ["aaa"] = false;
+			Application.Current.Properties ["steamworks"] = false;
+			Application.Current.Properties ["onSale"] = false;
 		}
 			
 	}

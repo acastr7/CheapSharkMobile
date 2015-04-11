@@ -22,13 +22,19 @@ namespace CheapSharkMobile
 		{
 			Pages = new Dictionary<string, Type> ();
 			Pages.Add ("DealsDetailPage", typeof(DealsDetailPage));
+			Pages.Add ("FilterPage", typeof(FilterPage));
+
 		}
 
 		#region INavigationService implementation
 
 		public void GoBack ()
 		{
-			MainPage.Navigation.PopAsync ();
+			if (MainPage.Navigation.ModalStack.Count > 0) {
+				MainPage.Navigation.PopModalAsync ();
+			} else {
+				MainPage.Navigation.PopAsync ();
+			}
 		}
 
 		public void NavigateTo (string pageKey)
@@ -39,9 +45,18 @@ namespace CheapSharkMobile
 		public void NavigateTo (string pageKey, object parameter)
 		{
 			try {
-				Page displayPage = (Page)Activator.CreateInstance (Pages [pageKey], new object[]{ parameter });
+				object[] parameters = null;
+				if (parameter != null) {
+					parameters = new object[]{ parameter };
+				}
+				Page displayPage = (Page)Activator.CreateInstance (Pages [pageKey], parameters);
 				_currentPageKey = pageKey;
-				MainPage.Navigation.PushAsync (displayPage);
+				var isModal = displayPage is IModalPage;
+				if (isModal) {
+					MainPage.Navigation.PushModalAsync (new NavigationPage (displayPage));
+				} else {
+					MainPage.Navigation.PushAsync (displayPage);
+				}
 			} catch (Exception ex) {
 				Debug.WriteLine (ex.Message);
 			}

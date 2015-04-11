@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Ioc;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace CheapSharkMobile
 {
@@ -43,8 +44,9 @@ namespace CheapSharkMobile
 			Title = "Details";
 			API = api;
 			IsBusy = true;
-
 		}
+
+
 
 		public async void GetDeal (string id)
 		{

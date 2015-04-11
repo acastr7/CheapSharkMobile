@@ -3,6 +3,8 @@ using Nito.AsyncEx;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace CheapSharkMobile
 {
@@ -33,6 +35,13 @@ namespace CheapSharkMobile
 				foreach (var store in stores) {
 					var model = new StoreCellViewModel ();
 					model.StoreName = store.StoreName;
+					model.StoreId = store.StoreId;
+					var filters = Application.Current.Properties ["StoreFilters"] as Dictionary<int,bool>;
+					foreach (var filter in filters) {
+						if (filter.Value) {
+							model.On = filter.Value;
+						}
+					}
 					results.Add (model);
 				}
 			} catch (Exception ex) {

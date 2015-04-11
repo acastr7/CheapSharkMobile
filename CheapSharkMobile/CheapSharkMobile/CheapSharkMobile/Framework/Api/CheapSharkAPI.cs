@@ -5,6 +5,7 @@ using Flurl.Http;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace CheapSharkMobile
 {
@@ -33,13 +34,28 @@ namespace CheapSharkMobile
 		}
 
 
-		public async Task<List<Deal>> GetDeals (string storeID = "", int pageNumber = 0, int pageSize = 60, string sortBy = "Deal Rating", bool desc = false, int lowerPrice = 0, int upperPrice = 50, int metacritic = 0, string title = "", bool exact = false, bool tripleA = false, bool steamworks = false, bool onSale = false)
+		public async Task<List<Deal>> GetDeals (List<string> storeID = null, int pageNumber = 0, int pageSize = 60, string sortBy = "Deal Rating", bool desc = false, int lowerPrice = 0, int upperPrice = 50, int metacritic = 0, string title = "", bool exact = false, bool tripleA = false, bool steamworks = false, bool onSale = false)
 		{
 			if (pageSize > 60) {
 				throw new ArgumentOutOfRangeException ("pageSize", "Page size cannot be greater than 60.");
 			}
 
-			return await DealsApi.SetQueryParams (null).GetJsonAsync<List<Deal>> ();
+			var queryParams = new Dictionary<string,string> ();
+			if (storeID != null && storeID.Any ()) {
+				queryParams.Add ("storeID", string.Join (",", storeID));
+			}
+			if (!string.IsNullOrEmpty (title)) {
+				queryParams.Add ("title", title);
+			}
+			queryParams.Add ("lowerPrice", lowerPrice.ToString ());
+			queryParams.Add ("upperPrice", upperPrice.ToString ());
+			queryParams.Add ("metacritic", metacritic.ToString ());
+			queryParams.Add ("AAA", tripleA.ToString ());
+			queryParams.Add ("steamworks", steamworks.ToString ());
+			queryParams.Add ("onSale", onSale.ToString ());
+			var url = DealsApi.SetQueryParams (queryParams);
+			Debug.WriteLine (url.ToString ());
+			return await DealsApi.SetQueryParams (queryParams).GetJsonAsync<List<Deal>> ();
 		}
 
 		public async Task<DealInformation> GetDeal (string id)

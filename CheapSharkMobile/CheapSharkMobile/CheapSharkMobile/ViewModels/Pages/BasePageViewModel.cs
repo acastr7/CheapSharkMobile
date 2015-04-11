@@ -12,7 +12,7 @@ namespace CheapSharkMobile
 			set { Set (() => IsBusy, ref isBusy, value); }
 		}
 
-		private string title = string.Empty;
+		private string title;
 
 		/// <summary>
 		/// Gets or sets the "Title" property
@@ -23,7 +23,7 @@ namespace CheapSharkMobile
 			set { Set (() => Title, ref title, value); }
 		}
 
-		private string subTitle = string.Empty;
+		private string subTitle;
 
 		/// <summary>
 		/// Gets or sets the "Subtitle" property

@@ -1,12 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheapSharkMobile.DealsPage" Title="{Binding Title}">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Text="Filter" Command="{Binding FilterCommand}"/>
+	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-		<ListView ItemsSource="{Binding Deals.Result}" HasUnevenRows="true" BackgroundColor="Transparent" SelectedItem="{Binding SelectedItem}">
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<ImageCell ImageSource="{Binding Thumb}" Text="{Binding Title}" Detail="{Binding SalePrice, StringFormat='Price {0:C}'}"/>
-				</DataTemplate>
-			</ListView.ItemTemplate>
-		</ListView>
+		<StackLayout>
+			<SearchBar Placeholder="Search" Text="{Binding SearchText}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBool}" SearchCommand="{Binding SearchCommand}" />
+			<ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="Black" VerticalOptions="CenterAndExpand" />
+			<ListView ItemsSource="{Binding Deals.Result}" HasUnevenRows="true" BackgroundColor="Transparent" SelectedItem="{Binding SelectedItem}" IsVisible="{Binding IsBusy, Converter={StaticResource InverseBool}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ImageCell ImageSource="{Binding Thumb}" Text="{Binding Title}" Detail="{Binding SalePrice, StringFormat='Price {0:C}'}" />
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
