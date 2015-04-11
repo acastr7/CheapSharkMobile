@@ -13,6 +13,7 @@
 					</TableSection>
 				</TableView.Root>
 			</TableView>
+			<Button Text="Go To Deal" HorizontalOptions="Center" Command="{Binding GoToDealCommand}" IsVisible="{Binding IsBusy, Converter={StaticResource InverseBool}"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

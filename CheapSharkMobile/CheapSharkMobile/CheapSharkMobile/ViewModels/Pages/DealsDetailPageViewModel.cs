@@ -3,6 +3,8 @@ using GalaSoft.MvvmLight.Ioc;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Command;
+using Xamarin.Forms;
 
 namespace CheapSharkMobile
 {
@@ -39,14 +41,24 @@ namespace CheapSharkMobile
 			set { Set (() => MetaCritic, ref metaCritic, value); }
 		}
 
+		RelayCommand gotoDealCommand;
+
+		public RelayCommand GoToDealCommand {
+			get {
+				return gotoDealCommand ?? (gotoDealCommand = new RelayCommand (delegate {
+					Device.OpenUri (new Uri (DealUrl));
+				}));
+			}
+		}
+
+		public string DealUrl { get; set; }
+
 		public DealsDetailPageViewModel (CheapSharkAPI api)
 		{
 			Title = "Details";
 			API = api;
 			IsBusy = true;
 		}
-
-
 
 		public async void GetDeal (string id)
 		{
@@ -60,6 +72,7 @@ namespace CheapSharkMobile
 						SalePrice = result.GameInfo.SalePrice.ToString ("C");
 						Name = result.GameInfo.Name;
 						MetaCritic = result.GameInfo.MetacriticScore;
+						DealUrl = string.Format ("http://www.cheapshark.com/redirect?dealID={0}", id);
 					}
 				}
 			} catch (Exception ex) {

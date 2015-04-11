@@ -8,9 +8,9 @@
 			<TableView Intent="Form">
 				<TableView.Root>
 					<TableSection>
-						<SwitchCell Text="AAA Only" />
-						<SwitchCell Text="Steamworks" />
-						<SwitchCell Text="On Sale" />
+						<SwitchCell Text="AAA Only" On="{Binding TripleA}"/>
+						<SwitchCell Text="Steamworks" On="{Binding Steamworks}"/>
+						<SwitchCell Text="On Sale" On="{Binding OnSale}"/>
 					</TableSection>
 					<TableSection Title="Price Range">
 						<ViewCell>
@@ -48,6 +48,7 @@
 					</TableSection>
 				</TableView.Root>
 			</TableView>
+			<Label Text="Powered by CheapShark.com"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
