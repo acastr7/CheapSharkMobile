@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace CheapSharkMobile
 {
@@ -20,6 +21,7 @@ namespace CheapSharkMobile
 
 		public string MetacriticLink { get; set; }
 
+		[JsonConverter (typeof(EpochToDateTimeConverter))]
 		public DateTime ReleaseDate { get; set; }
 
 		public string Publisher { get; set; }

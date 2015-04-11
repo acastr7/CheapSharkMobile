@@ -18,7 +18,7 @@ namespace CheapSharkMobile
 
 			Bootstrap.Run ();
 			// The root page of your application
-			MainPage = new NavigationPage (new DealsPage ());
+			MainPage = new NavigationPage (new RootPage ());
 		}
 
 		protected override void OnStart ()
@@ -40,6 +40,7 @@ namespace CheapSharkMobile
 		{
 			Application.Current.Resources = new ResourceDictionary ();
 			Application.Current.Resources.Add ("UriImageSouceConverter", new UriImageSouceConverter ()); // use the "AppStyle" key in the app
+			Application.Current.Resources.Add ("InverseBool", new InverseBool ());
 
 		}
 			

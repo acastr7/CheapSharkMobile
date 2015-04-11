@@ -1,13 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheapSharkMobile.DealsDetailPage" Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheapSharkMobile.DealsDetailPage" Title="{Binding Title}" xmlns:local="clr-namespace:CheapSharkMobile;assembly=CheapSharkMobile">
 	<ContentPage.Content>
-		<TableView Intent="Data">
-			<TableRoot Title="{Binding Name}">
-			<TableSection Title="Game Info">
-				<TextCell Text="Sale Price" Detail="{Binding SalePrice}"/>
-				<TextCell Text="Retail Price" Detail="{Binding RetailPrice}"/>
-			</TableSection>
-			</TableRoot>
-		</TableView>
+		<StackLayout>
+			<ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="Black" VerticalOptions="CenterAndExpand"/>
+			<TableView Intent="Form" IsVisible="{Binding IsBusy, Converter={StaticResource InverseBool}">
+				<TableView.Root>
+					<TableSection>
+						<TextCell Text="{Binding Name}" />
+						<TextCell Text="Sales Price" Detail="{Binding SalePrice}" />
+						<TextCell Text="Retail Price" Detail="{Binding RetailPrice}" />
+						<TextCell Text="MetaCritic" Detail="{Binding MetaCritic}" />
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

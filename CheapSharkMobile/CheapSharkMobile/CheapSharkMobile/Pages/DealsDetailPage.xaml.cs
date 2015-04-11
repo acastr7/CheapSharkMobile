@@ -15,9 +15,9 @@ namespace CheapSharkMobile
 		public DealsDetailPage (string dealId)
 		{
 			InitializeComponent ();
-			Title = "est";
 			DealId = dealId;
 			this.BindViewModel<DealsDetailPageViewModel> ();
+			this.GetViewModel<DealsDetailPageViewModel> ().IsBusy = true;
 		}
 
 		protected override void OnAppearing ()

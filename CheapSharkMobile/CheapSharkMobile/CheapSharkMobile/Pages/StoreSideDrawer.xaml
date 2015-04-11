@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheapSharkMobile.StoreSideDrawer" xmlns:local="clr-namespace:CheapSharkMobile;assembly=CheapSharkMobile">
+	<ContentPage.Content>
+		<ListView ItemsSource="{Binding Stores.Result}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<SwitchCell Text="{Binding StoreName}" On="{Binding On}"/>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</ContentPage.Content>
+</ContentPage>

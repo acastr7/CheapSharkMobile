@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace CheapSharkMobile
 {
@@ -40,10 +42,20 @@ namespace CheapSharkMobile
 			return await DealsApi.SetQueryParams (null).GetJsonAsync<List<Deal>> ();
 		}
 
-		public async Task<DealInformation> GetDeal (string storeId)
+		public async Task<DealInformation> GetDeal (string id)
 		{
-			return await DealsApi.SetQueryParam ("storeId", storeId).GetJsonAsync<DealInformation> ();
+			Debug.WriteLine ("GetDeal: " + id);
+			id = System.Net.WebUtility.UrlDecode (id); // for some reason the url comes in encoded alread, unfortunatly FLURL also encodes it before it is sent.
+			var result = await DealsApi.SetQueryParam ("id", id).GetStringAsync ();
+			Debug.WriteLine ("GetDeal: " + result);
 
+			return JsonConvert.DeserializeObject<DealInformation> (result);
+
+		}
+
+		public async Task<List<Store>> GetStores ()
+		{
+			return await StoresApi.GetJsonAsync < List<Store>> ();
 		}
 	}
 }

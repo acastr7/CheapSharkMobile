@@ -64,6 +64,13 @@
     <Compile Include="Pages\DealsDetailPage.xaml.cs">
       <DependentUpon>DealsDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Converters\InverseBool.cs" />
+    <Compile Include="Framework\Api\ServiceModels\Store.cs" />
+    <Compile Include="Pages\StoreSideDrawer.xaml.cs">
+      <DependentUpon>StoreSideDrawer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Pages\StoreSideDrawerViewModel.cs" />
+    <Compile Include="ViewModels\Cells\StoreCellViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -144,6 +151,7 @@
     <Folder Include="Framework\Helpers\" />
     <Folder Include="Helpers\" />
     <Folder Include="Helpers\Converters\" />
+    <Folder Include="ViewModels\Cells\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\DealsPage.xaml">
@@ -153,6 +161,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\DealsDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\StoreSideDrawer.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
