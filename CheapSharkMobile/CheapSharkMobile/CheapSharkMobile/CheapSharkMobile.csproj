@@ -76,6 +76,15 @@
       <DependentUpon>FilterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Framework\Services\Interfaces\IModalPage.cs" />
+    <Compile Include="Views\CardView.cs" />
+    <Compile Include="Models\Card.cs" />
+    <Compile Include="Framework\StyleKit.cs" />
+    <Compile Include="Views\CardStatusView.cs" />
+    <Compile Include="Views\CardDetailsView.cs" />
+    <Compile Include="Views\DateTimeView.cs" />
+    <Compile Include="Views\IconLabelView.cs" />
+    <Compile Include="Views\ConfigIconView.cs" />
+    <Compile Include="Framework\Xinions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -159,6 +168,7 @@
     <Folder Include="Helpers\Converters\" />
     <Folder Include="ViewModels\Cells\" />
     <Folder Include="Framework\Messages\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\DealsPage.xaml">

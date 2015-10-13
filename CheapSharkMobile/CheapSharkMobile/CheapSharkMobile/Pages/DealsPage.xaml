@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheapSharkMobile.DealsPage" Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheapSharkMobile.DealsPage" Title="{Binding Title}" xmlns:custom="clr-namespace:CheapSharkMobile;assembly=CheapSharkMobile">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Text="Filter" Command="{Binding FilterCommand}"/>
 	</ContentPage.ToolbarItems>
@@ -10,7 +10,7 @@
 			<ListView ItemsSource="{Binding Deals.Result}" HasUnevenRows="true" BackgroundColor="Transparent" SelectedItem="{Binding SelectedItem}" IsVisible="{Binding IsBusy, Converter={StaticResource InverseBool}">
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<ImageCell ImageSource="{Binding Thumb}" Text="{Binding Title}" Detail="{Binding SalePrice, StringFormat='Price {0:C}'}" />
+						<custom:CardView />
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>

@@ -15,9 +15,9 @@ namespace CheapSharkMobile
 	{
 		CheapSharkAPI API;
 
-		private INotifyTaskCompletion<ObservableCollection<Deal>> deals;
+		private INotifyTaskCompletion<ObservableCollection<Card>> deals;
 
-		public INotifyTaskCompletion<ObservableCollection<Deal>> Deals {
+		public INotifyTaskCompletion<ObservableCollection<Card>> Deals {
 			get { return deals; }
 			set { Set (() => Deals, ref deals, value); }
 		}
@@ -70,7 +70,7 @@ namespace CheapSharkMobile
 		{
 			API = api;
 			Navigation = navigation;
-			Deals = NotifyTaskCompletion.Create<ObservableCollection<Deal>> (GetDeals ());
+			Deals = NotifyTaskCompletion.Create<ObservableCollection<Card>> (GetDeals ());
 			Title = "Deals";
 			IsBusy = true;
 			Messenger.Default.Register<RefreshDealsPageMessage> (this, RefreshPage);
@@ -81,13 +81,13 @@ namespace CheapSharkMobile
 		public async void RefreshPage (RefreshDealsPageMessage message)
 		{
 			await Application.Current.SavePropertiesAsync ();
-			Deals = NotifyTaskCompletion.Create<ObservableCollection<Deal>> (GetDeals ());
+			Deals = NotifyTaskCompletion.Create<ObservableCollection<Card>> (GetDeals ());
 		}
 
-		public async Task<ObservableCollection<Deal>> GetDeals (string title = "")
+		public async Task<ObservableCollection<Card>> GetDeals (string title = "")
 		{
 			IsBusy = true;
-			ObservableCollection<Deal> results = new ObservableCollection<Deal> ();
+			ObservableCollection<Card> results = new ObservableCollection<Card> ();
 			try {
 				var filters = Application.Current.Properties ["StoreFilters"] as Dictionary<int,bool>;
 				List<string> storeIds = new List<string> ();
@@ -105,7 +105,25 @@ namespace CheapSharkMobile
 
 				var deals = await API.GetDeals (storeID: storeIds, lowerPrice: lowerPrice, upperPrice: upperPrice, title: title, metacritic: metacritic, tripleA: tripleA, steamworks: steamworks, onSale: onsale);
 				if (deals != null) {
-					results = new ObservableCollection<Deal> (deals);
+					foreach (var deal in deals) {
+						results.Add (new Card () { 
+							Status = CardStatus.Alert, 
+							Description = "Data Structures",
+							DueDate = DateTime.Now.AddDays (1),
+							DirationInMinutes = 45,
+							StatusMessage = "1 Day left!",
+							StatusMessageFileSource = StyleKit.Icons.Alert,
+							ActionMessage = "Resume",
+							ActionMessageFileSource = StyleKit.Icons.Resume,
+							Title = new FormattedString () {
+								Spans = {
+									new Span () {
+										Text = deal.Title
+									}
+								}
+							} 
+						});
+					}
 				}
 			} catch (Exception ex) {
 				Debug.WriteLine (ex.Message);
@@ -116,7 +134,7 @@ namespace CheapSharkMobile
 
 		public void Search ()
 		{
-			Deals = NotifyTaskCompletion.Create<ObservableCollection<Deal>> (GetDeals (SearchText));
+			Deals = NotifyTaskCompletion.Create<ObservableCollection<Card>> (GetDeals (SearchText));
 		}
 	}
 }
