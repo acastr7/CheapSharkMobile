@@ -12,9 +12,9 @@ namespace CheapSharkMobile
 
 		string _currentPageKey;
 
-		public Page MainPage {
+		public MasterDetailPage MainPage {
 			get {
-				return Application.Current.MainPage;
+				return (MasterDetailPage)Application.Current.MainPage;
 			}
 		}
 
@@ -53,9 +53,9 @@ namespace CheapSharkMobile
 				_currentPageKey = pageKey;
 				var isModal = displayPage is IModalPage;
 				if (isModal) {
-					MainPage.Navigation.PushModalAsync (new NavigationPage (displayPage));
+					MainPage.Detail.Navigation.PushModalAsync (new NavigationPage (displayPage));
 				} else {
-					MainPage.Navigation.PushAsync (displayPage);
+					MainPage.Detail.Navigation.PushAsync (displayPage);
 				}
 			} catch (Exception ex) {
 				Debug.WriteLine (ex.Message);

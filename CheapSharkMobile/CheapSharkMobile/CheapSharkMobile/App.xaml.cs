@@ -19,7 +19,7 @@ namespace CheapSharkMobile
 
 			Bootstrap.Run ();
 			// The root page of your application
-			MainPage = new NavigationPage (new RootPage ());
+			MainPage = new RootPage ();
 		}
 
 		protected override void OnStart ()
