@@ -10,6 +10,8 @@ namespace CheapSharkMobile
 		public RootPage ()
 		{
 			InitializeComponent ();
+
+			Detail = new NavigationPage (new DealsPage ());
 		}
 	}
 }

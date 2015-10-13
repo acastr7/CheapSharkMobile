@@ -55,7 +55,8 @@ namespace CheapSharkMobile
 			queryParams.Add ("onSale", onSale.ToString ());
 			var url = DealsApi.SetQueryParams (queryParams);
 			Debug.WriteLine (url.ToString ());
-			return await DealsApi.SetQueryParams (queryParams).GetJsonAsync<List<Deal>> ();
+			var json = await DealsApi.SetQueryParams (queryParams).GetStringAsync ();
+			return JsonConvert.DeserializeObject<List<Deal>> (json);
 		}
 
 		public async Task<DealInformation> GetDeal (string id)

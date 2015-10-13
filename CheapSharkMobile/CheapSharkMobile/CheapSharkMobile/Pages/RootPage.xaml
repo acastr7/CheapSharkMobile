@@ -3,7 +3,4 @@
 	<MasterDetailPage.Master>
 		<local:StoreSideDrawer Title="Stores"/>
 	</MasterDetailPage.Master>
-	<MasterDetailPage.Detail>
-		<local:DealsPage Title="Deals"/>
-	</MasterDetailPage.Detail>
 </MasterDetailPage>
