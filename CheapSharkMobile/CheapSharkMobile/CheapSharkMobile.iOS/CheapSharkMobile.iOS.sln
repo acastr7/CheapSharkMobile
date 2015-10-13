@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheapSharkMobile.iOS", "CheapSharkMobile.iOS.csproj", "{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.Debug|iPhone.Build.0 = Debug|iPhone
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.Release|iPhone.ActiveCfg = Release|iPhone
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.Release|iPhone.Build.0 = Release|iPhone
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{F7EC57FF-6EC7-4B9A-9D7D-6BEC82C80090}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+EndGlobal
