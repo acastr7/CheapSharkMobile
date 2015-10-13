@@ -7,7 +7,7 @@ namespace CheapSharkMobile.iOS
 	{
 		public static void Run ()
 		{
-			SimpleIoc.Default.Register<ISQLite,SQLite_iOS> ();
+			
 		}
 	}
 }
