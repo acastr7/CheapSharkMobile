@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Xamarin.Forms;
+using Xamarin;
 
 namespace CheapSharkMobile.Droid
 {
@@ -22,6 +23,8 @@ namespace CheapSharkMobile.Droid
 			base.OnCreate (bundle);
 
 			Forms.Init (this, bundle);
+
+			Insights.Initialize (AppConstants.InsightsApi, Forms.Context);
 
 			LoadApplication (new App ());
 		}

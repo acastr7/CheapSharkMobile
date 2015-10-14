@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using Xamarin;
 
 namespace CheapSharkMobile
 {
@@ -80,8 +81,12 @@ namespace CheapSharkMobile
 
 			bool result = false;
 			try {
+				if (!string.IsNullOrEmpty (Email)) {
+					Insights.Identify (Email, Insights.Traits.Email, Email);
+				}
 				result = await Api.SetAlert (Email, GameId, tempPrice);
 			} catch (Exception ex) {
+				Insights.Report (ex);
 				// await DialogService.ShowMessage ("Could not submit request at this time.", "Error");
 				Navigation.GoBack ();
 				return;

@@ -111,18 +111,17 @@
     <BundleResource Include="Resources\Icon-Small-50%402x.png" />
     <BundleResource Include="Resources\Icon.png" />
     <BundleResource Include="Resources\Icon%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Contents.json" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-40.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-40%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-40%403x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-60%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-60%403x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-76.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-76%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small%403x.png" />
     <BundleResource Include="Resources\Fonts\fontawesome-webfont.ttf" />
+    <BundleResource Include="Resources\Images.xcassets\AppIcons-1.appiconset\Icon-40.png" />
+    <BundleResource Include="Resources\Images.xcassets\AppIcons-1.appiconset\Icon-40%402x.png" />
+    <BundleResource Include="Resources\Images.xcassets\AppIcons-1.appiconset\Icon-40%403x.png" />
+    <BundleResource Include="Resources\Images.xcassets\AppIcons-1.appiconset\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Images.xcassets\AppIcons-1.appiconset\Icon-60%403x.png" />
+    <BundleResource Include="Resources\Images.xcassets\AppIcons-1.appiconset\Icon-76.png" />
+    <BundleResource Include="Resources\Images.xcassets\AppIcons-1.appiconset\Icon-76%402x.png" />
+    <BundleResource Include="Resources\Images.xcassets\AppIcons-1.appiconset\Icon-Small.png" />
+    <BundleResource Include="Resources\Images.xcassets\AppIcons-1.appiconset\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Images.xcassets\AppIcons-1.appiconset\Icon-Small%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -165,9 +164,32 @@
     <Reference Include="NControl">
       <HintPath>..\..\packages\NControl.0.7.1\lib\Xamarin.iOS10\NControl.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\..\packages\Xamarin.Insights.1.11.1\lib\Xamarin.iOS10\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="PLCrashReporterUnifiedBinding">
+      <HintPath>..\..\packages\Xamarin.Insights.1.11.1\lib\Xamarin.iOS10\PLCrashReporterUnifiedBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wpa81\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent">
+      <HintPath>..\..\packages\Nito.AsyncEx.3.0.1\lib\Xamarin.iOS10\Nito.AsyncEx.Concurrent.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx">
+      <HintPath>..\..\packages\Nito.AsyncEx.3.0.1\lib\Xamarin.iOS10\Nito.AsyncEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment">
+      <HintPath>..\..\packages\Nito.AsyncEx.3.0.1\lib\Xamarin.iOS10\Nito.AsyncEx.Enlightenment.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.1.5.1.6460-pre2\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.5.1.6460-pre2\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\Xamarin.Insights.1.11.1\build\Xamarin.iOS10\Xamarin.Insights.targets" Condition="Exists('..\..\packages\Xamarin.Insights.1.11.1\build\Xamarin.iOS10\Xamarin.Insights.targets')" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <ItemGroup>
     <ProjectReference Include="..\CheapSharkMobile\CheapSharkMobile.csproj">
       <Project>{1A9BB71B-522F-41C9-BD40-37FFB4E2A662}</Project>
@@ -176,5 +198,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons-1.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json" />
   </ItemGroup>
 </Project>
