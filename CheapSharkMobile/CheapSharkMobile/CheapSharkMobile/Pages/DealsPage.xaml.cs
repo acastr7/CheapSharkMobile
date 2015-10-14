@@ -12,7 +12,12 @@ namespace CheapSharkMobile
 			InitializeComponent ();
 
 			this.BindViewModel<DealsPageViewModel> ();
+
+			DealListView.ItemSelected += (sender, e) => {
+				((ListView)sender).SelectedItem = null;
+			};
 		}
+			
 	}
 }
 

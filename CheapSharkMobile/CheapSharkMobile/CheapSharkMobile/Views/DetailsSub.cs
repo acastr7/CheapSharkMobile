@@ -3,9 +3,9 @@ using Xamarin.Forms;
 
 namespace CheapSharkMobile
 {
-	public class DateTimeView : ContentView
+	public class DetailsSub : ContentView
 	{
-		public DateTimeView (Card card)
+		public DetailsSub (CardViewModel card)
 		{
 			var labelStyle = new Style (typeof(Label))
 				.Set (Label.FontSizeProperty, 8)
@@ -23,21 +23,27 @@ namespace CheapSharkMobile
 				Padding = new Thickness (0),
 				Orientation = StackOrientation.Horizontal,
 				Children = {
-					new Image () {
-						Style = iconStyle,
-						Source = StyleKit.Icons.SmallCalendar,
+					new FontAwesomeLabel () {
+						Text = FontAwesomeLabel.FAStar,
+						FontSize = 10,
+						BackgroundColor = Xamarin.Forms.Color.Transparent,
+						XAlign = Xamarin.Forms.TextAlignment.Center,
+						YAlign = Xamarin.Forms.TextAlignment.Center
 					},
 					new Label () {
-						Text = card.DueDate.ToString(),
+						Text = card.MetaCriticScore.ToString (),
 						Style = labelStyle,
 					},
 					new BoxView () { Color = Color.Transparent, WidthRequest = 20 },
-					new Image () {
-						Style = iconStyle,
-						Source = StyleKit.Icons.SmallClock,
+					new FontAwesomeLabel () {
+						Text = FontAwesomeLabel.FACalendar,
+						FontSize = 10,
+						BackgroundColor = Xamarin.Forms.Color.Transparent,
+						XAlign = Xamarin.Forms.TextAlignment.Center,
+						YAlign = Xamarin.Forms.TextAlignment.Center
 					},
 					new Label () {
-						Text = card.DirationInMinutes.ToString () + " Minutes",
+						Text = card.ReleaseDate.ToString ("d"),
 						Style = labelStyle,
 					}
 				}

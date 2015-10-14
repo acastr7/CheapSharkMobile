@@ -77,14 +77,15 @@
     </Compile>
     <Compile Include="Framework\Services\Interfaces\IModalPage.cs" />
     <Compile Include="Views\CardView.cs" />
-    <Compile Include="Models\Card.cs" />
     <Compile Include="Framework\StyleKit.cs" />
-    <Compile Include="Views\CardStatusView.cs" />
     <Compile Include="Views\CardDetailsView.cs" />
-    <Compile Include="Views\DateTimeView.cs" />
     <Compile Include="Views\IconLabelView.cs" />
     <Compile Include="Views\ConfigIconView.cs" />
     <Compile Include="Framework\Xinions.cs" />
+    <Compile Include="Views\FontAwesomeLabel.cs" />
+    <Compile Include="Views\DetailsSub.cs" />
+    <Compile Include="Models\CardViewModel.cs" />
+    <Compile Include="Views\BuyButtonView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -137,6 +138,12 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Platform">
       <HintPath>..\..\packages\Xamarin.Forms.1.5.1.6460-pre2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="NGraphics">
+      <HintPath>..\..\packages\NGraphics.0.3.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\NGraphics.dll</HintPath>
+    </Reference>
+    <Reference Include="NControl">
+      <HintPath>..\..\packages\NControl.0.7.1\lib\portable-net45+wp8+wp80+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\NControl.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

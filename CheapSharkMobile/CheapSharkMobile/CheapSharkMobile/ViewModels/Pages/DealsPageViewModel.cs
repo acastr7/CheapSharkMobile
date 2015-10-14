@@ -8,6 +8,7 @@ using GalaSoft.MvvmLight.Views;
 using GalaSoft.MvvmLight.Messaging;
 using Xamarin.Forms;
 using GalaSoft.MvvmLight.Command;
+using System.Linq;
 
 namespace CheapSharkMobile
 {
@@ -15,9 +16,9 @@ namespace CheapSharkMobile
 	{
 		CheapSharkAPI API;
 
-		private INotifyTaskCompletion<ObservableCollection<Card>> deals;
+		private INotifyTaskCompletion<ObservableCollection<CardViewModel>> deals;
 
-		public INotifyTaskCompletion<ObservableCollection<Card>> Deals {
+		public INotifyTaskCompletion<ObservableCollection<CardViewModel>> Deals {
 			get { return deals; }
 			set { Set (() => Deals, ref deals, value); }
 		}
@@ -70,7 +71,7 @@ namespace CheapSharkMobile
 		{
 			API = api;
 			Navigation = navigation;
-			Deals = NotifyTaskCompletion.Create<ObservableCollection<Card>> (GetDeals ());
+			Deals = NotifyTaskCompletion.Create<ObservableCollection<CardViewModel>> (GetDeals ());
 			Title = "Deals";
 			IsBusy = true;
 			Messenger.Default.Register<RefreshDealsPageMessage> (this, RefreshPage);
@@ -81,13 +82,13 @@ namespace CheapSharkMobile
 		public async void RefreshPage (RefreshDealsPageMessage message)
 		{
 			await Application.Current.SavePropertiesAsync ();
-			Deals = NotifyTaskCompletion.Create<ObservableCollection<Card>> (GetDeals ());
+			Deals = NotifyTaskCompletion.Create<ObservableCollection<CardViewModel>> (GetDeals ());
 		}
 
-		public async Task<ObservableCollection<Card>> GetDeals (string title = "")
+		public async Task<ObservableCollection<CardViewModel>> GetDeals (string title = "")
 		{
 			IsBusy = true;
-			ObservableCollection<Card> results = new ObservableCollection<Card> ();
+			ObservableCollection<CardViewModel> results = new ObservableCollection<CardViewModel> ();
 			try {
 				var filters = Application.Current.Properties ["StoreFilters"] as Dictionary<int,bool>;
 				List<string> storeIds = new List<string> ();
@@ -105,16 +106,17 @@ namespace CheapSharkMobile
 
 				var deals = await API.GetDeals (storeID: storeIds, lowerPrice: lowerPrice, upperPrice: upperPrice, title: title, metacritic: metacritic, tripleA: tripleA, steamworks: steamworks, onSale: onsale);
 				if (deals != null) {
+					var stores = await API.GetStores ();
 					foreach (var deal in deals) {
-						results.Add (new Card () { 
-							Status = CardStatus.Alert, 
-							Description = "Data Structures",
-							DueDate = DateTime.Now.AddDays (1),
-							DirationInMinutes = 45,
-							StatusMessage = "1 Day left!",
-							StatusMessageFileSource = StyleKit.Icons.Alert,
-							ActionMessage = "Resume",
-							ActionMessageFileSource = StyleKit.Icons.Resume,
+
+						var store = stores.FirstOrDefault (x => x.StoreId == deal.StoreID);
+						results.Add (new CardViewModel { 
+							Description = store == null ? string.Empty : store.StoreName,
+							MetaCriticScore = deal.MetacriticScore,
+							ReleaseDate = deal.ReleaseDate,
+							Price = deal.SalePrice.ToString ("C"),
+							DealUrl = string.Format ("http://www.cheapshark.com/redirect?dealID={0}", deal.DealID),
+							GameImage = deal.Thumb,
 							Title = new FormattedString () {
 								Spans = {
 									new Span () {
@@ -134,7 +136,7 @@ namespace CheapSharkMobile
 
 		public void Search ()
 		{
-			Deals = NotifyTaskCompletion.Create<ObservableCollection<Card>> (GetDeals (SearchText));
+			Deals = NotifyTaskCompletion.Create<ObservableCollection<CardViewModel>> (GetDeals (SearchText));
 		}
 	}
 }

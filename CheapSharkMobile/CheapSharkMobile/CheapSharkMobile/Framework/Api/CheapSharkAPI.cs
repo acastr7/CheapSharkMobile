@@ -70,9 +70,17 @@ namespace CheapSharkMobile
 
 		}
 
+
+		private List<Store> _stores;
+
 		public async Task<List<Store>> GetStores ()
 		{
-			return await StoresApi.GetJsonAsync < List<Store>> ();
+			if (_stores == null || _stores.Count <= 0) {
+
+				_stores = await StoresApi.GetJsonAsync < List<Store>> ();
+			}
+
+			return _stores;
 		}
 	}
 }

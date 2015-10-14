@@ -4,10 +4,10 @@
 		<ToolbarItem Text="Filter" Command="{Binding FilterCommand}"/>
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-		<StackLayout>
+		<StackLayout BackgroundColor="White">
 			<SearchBar Placeholder="Search" Text="{Binding SearchText}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBool}" SearchCommand="{Binding SearchCommand}" />
 			<ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="Black" VerticalOptions="CenterAndExpand" />
-			<ListView ItemsSource="{Binding Deals.Result}" HasUnevenRows="true" BackgroundColor="Transparent" SelectedItem="{Binding SelectedItem}" IsVisible="{Binding IsBusy, Converter={StaticResource InverseBool}">
+			<ListView x:Name="DealListView" ItemsSource="{Binding Deals.Result}" HasUnevenRows="true" BackgroundColor="Transparent" SelectedItem="{Binding SelectedItem}" IsVisible="{Binding IsBusy, Converter={StaticResource InverseBool}" SeparatorVisibility="None">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<custom:CardView />

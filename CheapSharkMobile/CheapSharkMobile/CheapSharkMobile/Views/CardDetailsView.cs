@@ -5,7 +5,7 @@ namespace CheapSharkMobile
 {
 	public class CardDetailsView : ContentView
 	{
-		public CardDetailsView (Card card)
+		public CardDetailsView (CardViewModel card)
 		{
 			BackgroundColor = Color.White;
 
@@ -22,14 +22,38 @@ namespace CheapSharkMobile
 				TextColor = StyleKit.LightTextColor
 			};
 
-			var stack = new StackLayout () {
+			var heading = new StackLayout () {
 				Spacing = 0,
 				Padding = new Thickness (10, 0, 0, 0),
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Children = {
 					TitleText,
 					DescriptionText,
-					new DateTimeView (card)
+				}
+			};
+
+			var headingContainer = new StackLayout () {
+				Spacing = 0,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Orientation = StackOrientation.Horizontal,
+				Children = {
+					new Image {
+						Source = card.GameImage,
+						HorizontalOptions = LayoutOptions.Start,
+						WidthRequest = 70
+					},
+					heading,
+				}
+			};
+
+
+			var stack = new StackLayout () {
+				Spacing = 0,
+				Padding = new Thickness (10, 0, 0, 0),
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Children = {
+					headingContainer,
+					new DetailsSub (card)
 				}
 			};
 
