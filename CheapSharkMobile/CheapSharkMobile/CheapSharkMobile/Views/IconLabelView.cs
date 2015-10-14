@@ -7,18 +7,21 @@ namespace CheapSharkMobile
 {
 	public class IconLabelView : NControlView
 	{
-		public IconLabelView (string fontIcon, string text)
+		public Label TextLabel { get; set; }
+
+		public IconLabelView (string fontIcon)
 		{
 			BackgroundColor = StyleKit.CardFooterBackgroundColor;
 
-			var label = new Label () {
-				Text = text,
+			TextLabel = new Label () {
 				FontSize = 15,
 				FontAttributes = FontAttributes.Bold,
 				TextColor = StyleKit.LightTextColor,
 				XAlign = Xamarin.Forms.TextAlignment.Center,
 				YAlign = Xamarin.Forms.TextAlignment.Center
 			};
+
+			TextLabel.SetBinding (Label.TextProperty, "Price");
 
 			var stack = new StackLayout () {
 				Padding = new Thickness (5),
@@ -32,7 +35,7 @@ namespace CheapSharkMobile
 						XAlign = Xamarin.Forms.TextAlignment.Center,
 						YAlign = Xamarin.Forms.TextAlignment.Center
 					},
-					label
+					TextLabel
 				}
 			};
 

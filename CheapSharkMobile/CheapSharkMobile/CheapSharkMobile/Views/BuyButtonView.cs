@@ -6,8 +6,9 @@ namespace CheapSharkMobile
 {
 	public class BuyButtonView : IconLabelView
 	{
-		public BuyButtonView (string fontIcon, string text) : base (fontIcon, text)
+		public BuyButtonView (string fontIcon, string text) : base (fontIcon)
 		{
+			TextLabel.SetValue (Label.TextProperty, text);
 			var tapGestureRecognizer = new TapGestureRecognizer ();
 			tapGestureRecognizer.SetBinding (TapGestureRecognizer.CommandProperty, "BuyDealCommand");
 

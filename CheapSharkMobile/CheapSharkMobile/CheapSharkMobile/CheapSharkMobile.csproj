@@ -86,6 +86,9 @@
     <Compile Include="Views\DetailsSub.cs" />
     <Compile Include="Models\CardViewModel.cs" />
     <Compile Include="Views\BuyButtonView.cs" />
+    <Compile Include="Pages\EmailNotificationsModal.xaml.cs">
+      <DependentUpon>EmailNotificationsModal.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">
@@ -191,6 +194,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\FilterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EmailNotificationsModal.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

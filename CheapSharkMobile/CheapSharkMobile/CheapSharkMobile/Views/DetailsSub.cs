@@ -5,7 +5,7 @@ namespace CheapSharkMobile
 {
 	public class DetailsSub : ContentView
 	{
-		public DetailsSub (CardViewModel card)
+		public DetailsSub ()
 		{
 			var labelStyle = new Style (typeof(Label))
 				.Set (Label.FontSizeProperty, 8)
@@ -17,6 +17,15 @@ namespace CheapSharkMobile
 				.Set (Image.WidthRequestProperty, 10)
 				.Set (Image.VerticalOptionsProperty, LayoutOptions.Center);
 
+			var metaLabel = new Label () {
+				Style = labelStyle,
+			};
+
+			metaLabel.SetBinding (Label.TextProperty, "MetaCriticScore");
+			var releaseLabel = new Label () {
+				Style = labelStyle,
+			};
+			releaseLabel.SetBinding (Label.TextProperty, new Binding (path: "ReleaseDate", stringFormat: "{0:d}"));
 			var stack = new StackLayout () {
 				VerticalOptions = LayoutOptions.Center,
 				HeightRequest = 20,
@@ -30,10 +39,7 @@ namespace CheapSharkMobile
 						XAlign = Xamarin.Forms.TextAlignment.Center,
 						YAlign = Xamarin.Forms.TextAlignment.Center
 					},
-					new Label () {
-						Text = card.MetaCriticScore.ToString (),
-						Style = labelStyle,
-					},
+					metaLabel,
 					new BoxView () { Color = Color.Transparent, WidthRequest = 20 },
 					new FontAwesomeLabel () {
 						Text = FontAwesomeLabel.FACalendar,
@@ -42,10 +48,7 @@ namespace CheapSharkMobile
 						XAlign = Xamarin.Forms.TextAlignment.Center,
 						YAlign = Xamarin.Forms.TextAlignment.Center
 					},
-					new Label () {
-						Text = card.ReleaseDate.ToString ("d"),
-						Style = labelStyle,
-					}
+					releaseLabel
 				}
 			};
 

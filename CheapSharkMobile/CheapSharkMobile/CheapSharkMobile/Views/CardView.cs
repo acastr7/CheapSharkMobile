@@ -7,14 +7,6 @@ namespace CheapSharkMobile
 	{
 		public CardView ()
 		{
-
-		}
-
-		protected override void OnBindingContextChanged ()
-		{
-			base.OnBindingContextChanged ();
-
-			var card = this.BindingContext as CardViewModel;
 			Grid grid = new Grid {
 				Padding = new Thickness (5, 5, 10, 5),
 				RowSpacing = 1,
@@ -32,12 +24,11 @@ namespace CheapSharkMobile
 				}
 			};
 
-			grid.Children.Add (new CardDetailsView (card), 1, 4, 0, 1);
+			grid.Children.Add (new CardDetailsView (), 1, 4, 0, 1);
 
 			grid.Children.Add (
 				new IconLabelView (
-					FontAwesomeLabel.FAMoney,
-					card.Price
+					FontAwesomeLabel.FAMoney
 				)
 				, 1, 1);
 
@@ -50,10 +41,11 @@ namespace CheapSharkMobile
 					"Buy"
 				)
 				, 3, 1);
-			
+
 
 			View = grid;
 		}
+
 	}
 }
 

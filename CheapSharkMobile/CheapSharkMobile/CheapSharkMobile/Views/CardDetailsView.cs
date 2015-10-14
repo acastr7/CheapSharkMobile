@@ -5,22 +5,27 @@ namespace CheapSharkMobile
 {
 	public class CardDetailsView : ContentView
 	{
-		public CardDetailsView (CardViewModel card)
+		public CardDetailsView ()
 		{
 			BackgroundColor = Color.White;
 
 			Label TitleText = new Label () {
-				FormattedText = card.Title,
+				//FormattedText = card.Title,
 				FontSize = 18,
 				TextColor = StyleKit.LightTextColor,
 				LineBreakMode = LineBreakMode.TailTruncation
 			};
 
 			Label DescriptionText = new Label () {
-				FormattedText = card.Description,
+				//FormattedText = card.Description,
 				FontSize = 12,
 				TextColor = StyleKit.LightTextColor
 			};
+
+			TitleText.SetBinding (Label.FormattedTextProperty, "Title");
+
+
+			DescriptionText.SetBinding (Label.FormattedTextProperty, "Description");
 
 			var heading = new StackLayout () {
 				Spacing = 0,
@@ -32,17 +37,20 @@ namespace CheapSharkMobile
 				}
 			};
 
+			var image = new Image {
+				HorizontalOptions = LayoutOptions.Start,
+				WidthRequest = 70
+			};
+
+			image.SetBinding (Image.SourceProperty, "GameImage");
+
 			var headingContainer = new StackLayout () {
 				Spacing = 0,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Orientation = StackOrientation.Horizontal,
 				Children = {
-					new Image {
-						Source = card.GameImage,
-						HorizontalOptions = LayoutOptions.Start,
-						WidthRequest = 70
-					},
-					heading,
+					image,
+					heading
 				}
 			};
 
@@ -53,7 +61,7 @@ namespace CheapSharkMobile
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Children = {
 					headingContainer,
-					new DetailsSub (card)
+					new DetailsSub ()
 				}
 			};
 
