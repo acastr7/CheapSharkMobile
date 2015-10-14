@@ -110,13 +110,14 @@ namespace CheapSharkMobile
 					foreach (var deal in deals) {
 
 						var store = stores.FirstOrDefault (x => x.StoreId == deal.StoreID);
-						results.Add (new CardViewModel { 
+						results.Add (new CardViewModel (this.Navigation) { 
 							Description = store == null ? string.Empty : store.StoreName,
 							MetaCriticScore = deal.MetacriticScore,
 							ReleaseDate = deal.ReleaseDate,
 							Price = deal.SalePrice.ToString ("C"),
 							DealUrl = string.Format ("http://www.cheapshark.com/redirect?dealID={0}", deal.DealID),
 							GameImage = deal.Thumb,
+							GameId = deal.GameID,
 							Title = new FormattedString () {
 								Spans = {
 									new Span () {

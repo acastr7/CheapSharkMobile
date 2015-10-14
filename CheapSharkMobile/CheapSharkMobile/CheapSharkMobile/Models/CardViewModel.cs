@@ -2,10 +2,12 @@
 using Xamarin.Forms;
 using GalaSoft.MvvmLight.Command;
 using System.Diagnostics;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
 
 namespace CheapSharkMobile
 {
-	public class CardViewModel
+	public class CardViewModel : ViewModelBase
 	{
 		RelayCommand configIconTapCommand;
 
@@ -25,6 +27,13 @@ namespace CheapSharkMobile
 			}
 		}
 
+		readonly INavigationService Navigation;
+
+		public CardViewModel (INavigationService navigation)
+		{
+			Navigation = navigation;
+		}
+
 		public string Price { get; set; }
 
 		public string GameImage { get; set; }
@@ -39,15 +48,12 @@ namespace CheapSharkMobile
 
 		public string DealUrl { get; set; }
 
-		public CardViewModel ()
-		{
-			
-		}
+		public int GameId { get; set; }
 
 
 		void ConfigIconTapped ()
 		{
-			Debug.WriteLine (Title);
+			Navigation.NavigateTo ("EmailNotificationsModal", new object[]{ Title.ToString (), GameId });
 		}
 	}
 

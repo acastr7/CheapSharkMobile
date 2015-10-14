@@ -15,7 +15,7 @@ namespace CheapSharkMobile
 
 		public int StoreID { get; set; }
 
-		public string GameID { get; set; }
+		public int GameID { get; set; }
 
 		public Decimal SalePrice { get; set; }
 

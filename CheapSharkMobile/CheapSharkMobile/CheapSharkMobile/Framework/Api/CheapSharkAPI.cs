@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using System.Linq;
+using System.Net.Http;
 
 namespace CheapSharkMobile
 {
@@ -68,6 +69,17 @@ namespace CheapSharkMobile
 
 			return JsonConvert.DeserializeObject<DealInformation> (result);
 
+		}
+
+		public async Task<bool> SetAlert (string email, int gameId, decimal price)
+		{
+			var queryParams = new Dictionary<string,string> ();
+			queryParams.Add ("action", "set");
+			queryParams.Add ("email", email);
+			queryParams.Add ("gameID", gameId.ToString ());
+			queryParams.Add ("price", price.ToString ());
+
+			return await AlertsApi.SetQueryParams (queryParams).GetJsonAsync<bool> ();
 		}
 
 

@@ -26,7 +26,7 @@ namespace CheapSharkMobile
 
 		public System.Threading.Tasks.Task ShowMessage (string message, string title)
 		{
-			throw new NotImplementedException ();
+			return CurrentPage.DisplayAlert (title, message, "Ok");
 		}
 
 		public System.Threading.Tasks.Task ShowMessage (string message, string title, string buttonText, Action afterHideCallback)

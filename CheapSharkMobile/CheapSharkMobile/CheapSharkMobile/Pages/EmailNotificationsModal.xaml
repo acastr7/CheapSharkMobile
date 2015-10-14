@@ -1,17 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheapSharkMobile.EmailNotificationsModal">E
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheapSharkMobile.EmailNotificationsModal" Title="{Binding Title}">
 	<ContentPage.Padding>
 	        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" WinPhone="20,20,20,20" />
 	</ContentPage.Padding>
 	<ContentPage.Content>
 		<StackLayout>
-			<Label Text="Sign Up For Price Notifications"/>
-			<Label Text="To get price alerts via email for Valkyria Chronicles fill out the information below." />
+			<Label Text="Sign Up For Price Notifications" HorizontalOptions="CenterAndExpand"/>
+			<Label FormattedText="{Binding GameName}" HorizontalOptions="CenterAndExpand"/>
 			<Label Text="Email" />
-			<Entry Placeholder="example@example.com" />
+			<Entry Placeholder="example@example.com" Text="{Binding Email}" Keyboard="Email"/>
 			<Label Text="Target Price" />
-			<Entry Placeholder="9.99" />
-			<Label Text="When the price at any store reaches (or goes under) your target, we'll let you know!" />
+			<Entry Placeholder="9.99" Text="{Binding Price}" Keyboard="Numeric"/>
+			<Label Text="When the price at any store reaches (or goes under) your target, we'll let you know!" HorizontalOptions="CenterAndExpand"/>
+			<Button Text="Submit" Command="{Binding SubmitEmailNotificationsCommand}" HorizontalOptions="CenterAndExpand" />
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

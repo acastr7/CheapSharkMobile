@@ -89,6 +89,7 @@
     <Compile Include="Pages\EmailNotificationsModal.xaml.cs">
       <DependentUpon>EmailNotificationsModal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Pages\EmailNotificationsPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation">

@@ -10,14 +10,12 @@ namespace CheapSharkMobile
 			BackgroundColor = Color.White;
 
 			Label TitleText = new Label () {
-				//FormattedText = card.Title,
 				FontSize = 18,
 				TextColor = StyleKit.LightTextColor,
 				LineBreakMode = LineBreakMode.TailTruncation
 			};
 
 			Label DescriptionText = new Label () {
-				//FormattedText = card.Description,
 				FontSize = 12,
 				TextColor = StyleKit.LightTextColor
 			};
@@ -39,7 +37,8 @@ namespace CheapSharkMobile
 
 			var image = new Image {
 				HorizontalOptions = LayoutOptions.Start,
-				WidthRequest = 70
+				WidthRequest = 70,
+				HeightRequest = 50
 			};
 
 			image.SetBinding (Image.SourceProperty, "GameImage");

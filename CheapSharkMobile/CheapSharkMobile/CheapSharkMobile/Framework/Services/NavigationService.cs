@@ -23,6 +23,7 @@ namespace CheapSharkMobile
 			Pages = new Dictionary<string, Type> ();
 			Pages.Add ("DealsDetailPage", typeof(DealsDetailPage));
 			Pages.Add ("FilterPage", typeof(FilterPage));
+			Pages.Add ("EmailNotificationsModal", typeof(EmailNotificationsModal));
 
 		}
 
@@ -45,11 +46,8 @@ namespace CheapSharkMobile
 		public void NavigateTo (string pageKey, object parameter)
 		{
 			try {
-				object[] parameters = null;
-				if (parameter != null) {
-					parameters = new object[]{ parameter };
-				}
-				Page displayPage = (Page)Activator.CreateInstance (Pages [pageKey], parameters);
+				
+				Page displayPage = (Page)Activator.CreateInstance (Pages [pageKey], (object[])parameter);
 				_currentPageKey = pageKey;
 				var isModal = displayPage is IModalPage;
 				if (isModal) {
@@ -59,6 +57,7 @@ namespace CheapSharkMobile
 				}
 			} catch (Exception ex) {
 				Debug.WriteLine (ex.Message);
+				//throw ex;
 			}
 		}
 
