@@ -9,6 +9,16 @@ namespace CheapSharkMobile
 {
 	public class EmailNotificationsPageViewModel : BasePageViewModel
 	{
+		RelayCommand doneCommand;
+
+		public RelayCommand DoneCommand {
+			get {
+				return doneCommand ?? (doneCommand = new RelayCommand (delegate {
+					Navigation.GoBack ();
+				}));
+			}
+		}
+
 		private string price;
 
 		public string Price {
