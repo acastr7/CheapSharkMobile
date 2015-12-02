@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{57087D94-9729-4E27-9315-4466032848D3}</ProjectGuid>
+    <ProjectGuid>{2AF25025-B159-4ED1-A3A3-BF0A3868D237}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CheapSharkMobile.UITest</RootNamespace>
-    <AssemblyName>CheapSharkMobile.UITest</AssemblyName>
+    <RootNamespace>CheapSharkMobile.UITests</RootNamespace>
+    <AssemblyName>CheapSharkMobile.UITests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -30,14 +30,15 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Xamarin.UITest">
-      <HintPath>..\..\packages\Xamarin.UITest.1.2.0\lib\Xamarin.UITest.dll</HintPath>
+      <HintPath>..\packages\Xamarin.UITest.1.2.0\lib\Xamarin.UITest.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\..\packages\NUnit.3.0.0\lib\net45\nunit.framework.dll</HintPath>
+      <HintPath>..\packages\NUnit.3.0.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests.cs" />
+    <Compile Include="AppInitializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

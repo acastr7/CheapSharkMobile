@@ -71,7 +71,7 @@
     <MtouchUseThumb>true</MtouchUseThumb>
     <BuildIpa>true</BuildIpa>
     <IpaIncludeArtwork>true</IpaIncludeArtwork>
-    <CodesignProvision>467560f5-69a9-4eb3-9d90-94615e8e0f45</CodesignProvision>
+    <CodesignProvision>4179e61d-54ce-4a20-b50d-97c4053c7346</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
